@@ -1,0 +1,25 @@
+<ul id="products">
+
+</ul>
+
+<script>
+			function reqListener() {
+				 	var jsonResponse = JSON.parse(this.responseText);
+					// console.log(this.responseText);
+					var ul = document.getElementById("products");
+					jsonResponse.products.forEach((item) => {
+						console.log("Product->",item);
+						var li = document.createElement("li");
+						li.innerHTML = "Title: " +item.title + " Price: " + item.price;
+						ul.appendChild(li);
+					});
+				}
+				const req = new XMLHttpRequest();
+				console.log("🚀 ~ file: all-products.html:14 ~ req", req);
+		req.addEventListener("load", reqListener);
+		req.open("GET", "http://localhost:3000/products");
+		req.send();
+		console.log("🚀 ~ file: all-products.html:17 ~ req.send()");
+
+
+</script>
